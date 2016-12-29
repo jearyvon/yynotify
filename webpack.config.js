@@ -5,8 +5,7 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var packCSS = new ExtractTextPlugin('./dist/css/[name].min.css');
+
 module.exports={
     entry:'./src/js/notify.js',
     output:{
@@ -18,10 +17,6 @@ module.exports={
     },
     module:{
         loaders:[
-            {
-                test: /\.css$/,
-                loaders:ExtractTextPlugin.extract(["style-loader", "css-loader"])
-            },
             {
                 test: /\.scss$/,
                 include:path.resolve(__dirname, "./src/sass/"),
@@ -40,10 +35,7 @@ module.exports={
     devServer: {
         historyApiFallback: true,
         noInfo: true
-    },
-    plugins: [
-        packCSS
-    ],
+    }
     devtool: '#source-map'
 }
 if (process.env.NODE_ENV === 'production') {

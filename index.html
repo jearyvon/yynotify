@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>notify</title>
+    <link rel="stylesheet" href="dist/css/main.min.css">
+</head>
+<body>
+
+<button id="my-btn"> 飞入</button>
+
+<button id="my-btn-2"> 中闪</button>
+
+<script src="dist/main.notify.js"></script>
+
+
+<script>
+    var llll =new YYNotify({});
+    var l2 =new YYNotify({
+        position:'middleBottom',
+        animate:'yynotify-shake'
+    });
+    document.querySelector('#my-btn').onclick=function () {
+        llll.show({
+            time:-1,
+            tipsType:false,
+            title:"啊",
+            content:"ttttsss"
+        })
+    }
+    document.querySelector('#my-btn-2').onclick=function () {
+        l2.show({
+            time:5000,
+            tipsType:true,
+            title:"你好啊",
+            content:"这里写点什么好的"
+        })
+    }
+</script>
+</body>
+</html>

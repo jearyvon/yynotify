@@ -1,8 +1,7 @@
 /**
  * Created by findl on 2016/12/14.
  */
-require('../sass/yynotify.scss');
-class  YYNotify{
+class YYNotify{
     constructor(options){
         this.index = 0
         this.options =options;

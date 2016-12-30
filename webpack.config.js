@@ -7,7 +7,7 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
 
 module.exports={
-    entry:'./src/js/notify.js',
+    entry:'./src/js/YYNotify.js',
     output:{
         path: BUILD_PATH,
         library:'YYNotify',
@@ -18,24 +18,16 @@ module.exports={
     module:{
         loaders:[
             {
-                test: /\.scss$/,
-                include:path.resolve(__dirname, "./src/sass/"),
-                loaders:["style-loader", "css-loader", "sass-loader"]
-            },
-            {
                 test: /\.js$/,
+                include:path.resolve(__dirname, "./src/sass/"),
                 loader: 'babel-loader'
             }
         ]
     },
-    sassLoader: {
-        includePaths: [path.resolve(__dirname, "./src/sass/")]
-    },
-
     devServer: {
         historyApiFallback: true,
         noInfo: true
-    }
+    },
     devtool: '#source-map'
 }
 if (process.env.NODE_ENV === 'production') {
@@ -45,12 +37,6 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                warnings: false
             }
         })
     ])

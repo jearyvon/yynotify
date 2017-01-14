@@ -1,6 +1,7 @@
 /**
  * Created by findl on 2016/12/14.
  */
+require('../sass/yynotify-wl.scss');
 class YYNotify{
     constructor(options){
         this.index = 0
@@ -60,8 +61,8 @@ class YYNotify{
         let title ="通知",time,content="通知测试"
         if(param instanceof Object){
             time =param.time;
-            title =param.title;
-            content =param.content;
+            title =param.title?param.title:title;
+            content =param.content?param.content:content;
             if(!param.icon){
                 if(param.tipsType){
                     statusIcon =this.getSVG('success')
@@ -78,7 +79,7 @@ class YYNotify{
         let template = `
         <div class="yynotify-header">
             <div class="yynotify-title">${title}</div>
-            <div class="yynotify-close">${this.getSVG('close')}</div>
+            <div class="yynotify-close"></div>
         </div>
         <div class="yynotify-icon">${statusIcon}</div>
         <div class="yynotify-body">${content}</div>
@@ -88,7 +89,7 @@ class YYNotify{
         child.id ="yynotify-"+this.index;
         child.innerHTML=template;
         this.boxtemplate.appendChild(child)
-        this.playAudio('./src/static/Windows-Notify-Messaging.wav');
+        this.playAudio('http://myacg-10004110.cos.myqcloud.com/data/notify-1.mp3');
         child.querySelector('#yynotify-'+this.index+' .yynotify-close').addEventListener('click',(event)=>{
             child.className +=" yynotify-hide"
             this.boxtemplate.removeChild(child)

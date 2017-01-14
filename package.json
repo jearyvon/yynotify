@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules"
   },
   "author": "jearyvon",
   "license": "ISC",
@@ -21,6 +21,7 @@
     "gulp": "^3.9.1",
     "gulp-sass": "^3.0.0",
     "node-sass": "^4.0.0",
+    "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"

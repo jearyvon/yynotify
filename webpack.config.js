@@ -19,9 +19,10 @@ module.exports={
         loaders:[
             {
                 test: /\.js$/,
-                include:path.resolve(__dirname, "./src/sass/"),
+                include:path.resolve(__dirname, "./src/js/"),
                 loader: 'babel-loader'
-            }
+            },
+            { test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
         ]
     },
     devServer: {
@@ -38,6 +39,11 @@ if (process.env.NODE_ENV === 'production') {
             'process.env': {
                 NODE_ENV: '"production"'
             }
+        }),new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            compress: {
+                warnings: false,
+            },
         })
     ])
 }
